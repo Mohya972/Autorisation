@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Gate simple pour vérifier si l'utilisateur est un administrateur
         Gate::define('access-admin', function (User $user) {
-            return $user->is_admin===true;
+            return $user->is_admin==true;
         });
     }
 }
