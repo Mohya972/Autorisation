@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
 {
@@ -11,9 +13,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
-        
-        
+        // Lance automatiquement ERREUR 403 si l'accès est refusé
+        // $this->authorize('access-admin');
+        if(Gate::denies('access-admin')) {
+            abort(403, "ACCES REFUSE");
+        }
+        return 'Vous êtes administrateur !';
     }
 
     /**
